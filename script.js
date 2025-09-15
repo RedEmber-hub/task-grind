@@ -1,6 +1,11 @@
-function areYouPlayingBanjo(name) {
-    if(name[0] === 'R' || name[0] === 'r') {return name + " plays banjo"} else {return name + " does not play banjo"}
+function calculatePoints(matches) {
+ return matches.reduce((points, match) => {
+    const [x, y] = match.split(":").map(Number);
+    
+    if (x > y) return points + 3;      
+    if (x === y) return points + 1;    
+    return points;                       
+ }, 0)
 }
 
-console.log(areYouPlayingBanjo("Dina"));
-console.log(areYouPlayingBanjo("Rushana"));
+console.log(calculatePoints(["3:1", "2:2", "0:1"]));
